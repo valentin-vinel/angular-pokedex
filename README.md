@@ -87,3 +87,22 @@ Angular crée une nouvelle instance de notre directive à chaque fois qu'il dét
 Il faut déclarer notre directive au niveau du système de modules d'Angular pour pouvoir l’utiliser.
 
 On utilise l'annotation *@HostListener* pour gérer les interactions de l'utilisateur au sein d'une directive.
+
+## Pipes
+
+Les pipes permettent de formater les données affichées dans nos templates.
+
+L'opérateur des pipes est "|"
+
+Angular fournit des pipes prêts à l'emploi qui sont disponibles dans tous les templates de notre application : DatePipe, UpperCasePipe, LowerCasePipe, etc.
+
+```html
+<p><small>{{ pokemon.created | date:"dd/MM/YYYY" }}</small></p>
+```
+
+Pour générer un fichier @Pipe:
+`ng generate pipe <pokemon-type-color>`
+
+On peut créer des pipes personnalisés pour les besoins de notre application avec l'annotation @Pipe.
+
+Les pipes personnalisés doivent être déclarés au niveau d'un module Angular avant de pouvoir être utilisés dans les templates de composants. 
