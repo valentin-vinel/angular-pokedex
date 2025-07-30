@@ -63,3 +63,27 @@ Le template s'occupe d'afficher les données intégrées dans du HTML et d'écou
 3. Pour écouter les événements, on utilise les `(nomEvent)=nomMethode()` dans le template.
 4. Pour intéragir avec l'événement, on doit créer la méthode dans la classe TypeScript.
 
+## Directives
+
+Une directive est une classe Angular qui ressemble beaucoup à un composant, sauf qu'elle n'a pas de template.
+
+On utilise l'annotation *@Directive* pour déclarer une directive dans notre application.
+
+3 types de directives:
+- Les composants
+- Les directives d'attributs
+- Les directives structurelles
+
+Créer un composant directive via le terminal: `ng generate directive <nom-du-composant>`
+
+Il s'ajoute automatiquement dans **app.component.ts**
+
+Une directive utilise un sélecteur CSS pour cibler les éléments HTML sur lesquels elle s’applique.
+
+Il est recommandé de préfixer le nom de ses directives pour éviter les problèmes de collisions.
+
+Angular crée une nouvelle instance de notre directive à chaque fois qu'il détecte un élément HTML avec l'attribut correspondant. Il injecte alors dans le constructeur de la directive l'élément du DOM ElementRef.
+
+Il faut déclarer notre directive au niveau du système de modules d'Angular pour pouvoir l’utiliser.
+
+On utilise l'annotation *@HostListener* pour gérer les interactions de l'utilisateur au sein d'une directive.
