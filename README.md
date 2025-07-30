@@ -1,1 +1,1 @@
-# angular-pokedex
+# Angular Pokedex
