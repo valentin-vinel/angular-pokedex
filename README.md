@@ -227,3 +227,67 @@ export class AppModule { }
 })
 export class PokemonModule { }
 ```
+
+## Services
+
+L'annotation d'un service est **@Injectable**.
+
+Un service permet de factoriser et de centraliser du code qui peut être utile ailleurs dans l'application.
+
+On utilise l'injection de dépendances pour rendre un service disponible dans toute l'application, dans un module ou au niveau d'un composant.
+
+On ne gère jamais nous-mêmes les dépendances d'un composant ou d'un service, car on doit toujours passer le système d'injection de dépendances fournit par Angular.
+
+L'injecteur racine 'root' permet de garantir que l'instance de notre service est unique à travers **toute l'application.**
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+```
+
+Pour qu'un service soit disponible seulement dans un module, on l'ajoute au module comme ceci via *providers*:
+```ts
+@NgModule({
+  declarations: [
+    ListPokemonComponent,
+    DetailPokemonComponent,
+    BorderCardDirective,
+    PokemonTypeColorPipe
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(pokemonRoutes)
+  ],
+  providers: [PokemonService]
+})
+```
+
+L'annotation **@Injectable** est déjà présente de manière invisible dans les annotations *@Component*, *@Pipe* et *@Directive*.
+
+## Forms
+
+Le module **FormsModule** est utile pour développer des formulaires avec Angular. Il met à notre disposition les directives *NgForm* et *NgModel*.
+
+La directive *NgModel* ajoute et retire certaines classes au champ sur lequel elle s'applique. Ces classes peuvent être utilisées pour afficher des messages d'erreurs ou de succès et des indicateurs visuels à l'utilisateur.
+
+La syntaxe à retenir pour utiliser NgModel est "crochets-parenthèses" comme ceci [(ngModel)].
+```ts
+<!-- Pokemon name -->
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control"  id="name"
+      required
+      pattern="^[a-zA-Z0-9àéèç]{1,25}$"
+      [(ngModel)]="pokemon.name" name="name"
+      #name="ngModel">
+  <div [hidden]="name.valid || name.pristine"
+    class="card-panel red accent-1">
+    Le nom du pokémon est requis (1-25).
+  </div>
+</div>
+```
+
+On peut utiliser les attributs HMTL5 pour gérer la validation côté client comme *required* ou *pattern*.
+On peut aussi utiliser des validateurs personnalisés en développant nos propres méthodes de validation dans la classe du composant.
+
+Bien sûr, il faut toujours effectuer une validation côté serveur en complément de la validation côté client, si vous avez prévu de stocker des données depuis votre application.
