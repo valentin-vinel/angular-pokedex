@@ -294,4 +294,15 @@ Bien sûr, il faut toujours effectuer une validation côté serveur en comple�
 
 ## Programmation réactive
 
-Programmation réactive = Programmation avec des flux de données asynchrones
+Les promesses sont natives en JavaScript depuis l'arrivée de la norme ES6.
+
+La programmation réactive implique de gérer des flux de données asynchrones.
+> *Programmation réactive = Programmation avec des flux de données asynchrones*
+
+Un **flux** est une séquence d'événements ordonnés dans le temps.
+On peut appliquer différentes opérations sur les flux : regroupements, filtrages, troncatures, etc.
+
+Un flux peut émettre trois types de réponses : la valeur associée à un événement, une erreur ou une notification de complétion pour mettre fin au flux.
+
+La librairie **RxJS** est la librairie la plus populaire pour implémenter la programmation réactive en JavaScript.
+Dans RxJS les flux d'événements sont représentés par un objet appelé Observable. 
