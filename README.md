@@ -179,3 +179,51 @@ const routes: Routes = [
 ```
 
 Les routes doivent être regroupées par fonctionnalité au sein de modules.
+
+## Modules
+
+Les modules sont nécessaire pour l'organisation et la structure de notre architecture.
+
+Il existe deux types de modules : le **module racine** et les **modules de fonctionnalité**.
+
+On déclare un module avec l'annotation @NgModule, quel que soit le type de ce module.
+
+Chaque module regroupe tous les composants, directives, pipes et services qui sont liés au développement d'une fonctionnalité donnée, dans un dossier à part.
+
+Chaque module peut disposer de ses propres routes également.
+On définit les routes de nos sous-modules avec forChild et forRoot pour les routes du module racine.
+
+**Module racine**:
+```ts
+@NgModule({
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent
+  ],
+  imports: [
+    BrowserModule,
+    PokemonModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+**"Sous"-module Pokemon**:
+```ts
+@NgModule({
+  declarations: [
+    ListPokemonComponent,
+    DetailPokemonComponent,
+    BorderCardDirective,
+    PokemonTypeColorPipe
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(pokemonRoutes)
+  ]
+})
+export class PokemonModule { }
+```
