@@ -106,3 +106,76 @@ Pour générer un fichier @Pipe:
 On peut créer des pipes personnalisés pour les besoins de notre application avec l'annotation @Pipe.
 
 Les pipes personnalisés doivent être déclarés au niveau d'un module Angular avant de pouvoir être utilisés dans les templates de composants. 
+
+## Les routes
+
+Dans le fichier `app-routing.modules.ts`, nous indiquons dans le tableau *routes*, les chemins (URL) des routes que nous souhaitons afficher, en les liants au composant correspondant:
+
+```ts
+const routes: Routes = [
+  { path: 'pokemons', component: ListPokemonComponent},
+  { path: 'pokemon/:id', component: DetailPokemonComponent},
+  { path: '', redirectTo: 'pokemons', pathMatch: 'full' }
+];
+```
+
+La balise <router-outlet> permet de définir où le template des composants fils sera injecté. Cette balise est disponible dans tous les templates des composants du module racine.
+
+Pour récupérer `/:id` dans mon component `detail-pokemon.component.ts`, je dois placer dans mon constructeur *ActivatedRoute*:
+
+```ts
+export class DetailPokemonComponent implements OnInit {
+
+  constructor(private router: ActivatedRoute) { }
+
+  ngOnInit() {
+    const pokemonId: string | null = this.router.snapshot.paramMap.get('id');
+  }
+
+}
+```
+
+Pour naviguer via les liens cliquables sur les templates, il faut définir une fonction de navigation dans le component via *Router*
+
+```ts
+@Component({
+  selector: 'app-list-pokemon',
+  templateUrl: './list-pokemon.component.html',
+})
+export class ListPokemonComponent {
+
+  pokemonList: Pokemon[] = POKEMONS;
+
+  constructor(private router: Router) { }
+
+  goToPokemon(pokemon: Pokemon) {
+    this.router.navigate(['/pokemon', pokemon.id])
+  }
+
+}
+```
+
+```ts
+<div (click)="goToPokemon(pokemon)" class="card horizontal" pkmnBorderCard>
+```
+
+**Page 404: not found**
+
+Pour gérer la page 404 de notre app, nous créons un nouveau composant via CLI:
+
+`ng generate component page-not-found`
+
+Nous l'appelons donc dans le *app-routing.module.ts* à la fin de notre tableau routes avec le chemin '**'. Celui-ci intercepte toutes les routes.
+
+Le système de routes d'Angular interprète les routes qui sont déclarées du haut vers le bas. Il est donc impératif de placer la route 404 à la fin de notre tableau.
+
+```ts
+const routes: Routes = [
+  { path: 'pokemons', component: ListPokemonComponent},
+  { path: 'pokemon/:id', component: DetailPokemonComponent},
+  { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
+];
+```
+
+Les routes doivent être regroupées par fonctionnalité au sein de modules.
