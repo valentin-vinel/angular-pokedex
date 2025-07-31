@@ -291,3 +291,7 @@ On peut utiliser les attributs HMTL5 pour gérer la validation côté client 
 On peut aussi utiliser des validateurs personnalisés en développant nos propres méthodes de validation dans la classe du composant.
 
 Bien sûr, il faut toujours effectuer une validation côté serveur en complément de la validation côté client, si vous avez prévu de stocker des données depuis votre application.
+
+## Programmation réactive
+
+Programmation réactive = Programmation avec des flux de données asynchrones
