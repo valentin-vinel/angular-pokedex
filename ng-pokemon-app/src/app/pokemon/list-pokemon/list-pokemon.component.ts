@@ -17,7 +17,11 @@ export class ListPokemonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.pokemonList = this.pokemonService.getPokemonList();
+    this.pokemonService.getPokemonList()
+      .subscribe(data => {
+        console.log(data)
+        this.pokemonList = data as Array<Pokemon>});
+        
   }
 
   goToPokemon(pokemon: Pokemon) {
