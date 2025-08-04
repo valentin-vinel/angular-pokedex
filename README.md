@@ -316,4 +316,14 @@ Angular inclut son propre client HTTP pour effectuer des requêtes réseaux.
 Les types de requêtes les plus courantes sont GET, POST, PUT et DELETE.
 Le client HTTP d'Angular permet de typer les valeurs reçues à travers le réseau.
 
-Les **Observables** permettent de faciliter la gestion des événements asynchrones.
+Les **Observables** permettent de faciliter la gestion des événements asynchrones. Ils sont adaptés pour gérer des séquences d'évènements.
+
+## RxJS
+
+Les opérateurs RxJS doivent être importés depuis la librairie RxJS car ils ne font pas partis du framework Angular directement, ils permettent de traiter des flux.
+
+Un **Observable** est un producteur de données uniquement.
+
+Un **Subject** est un Observable également mais il est possible de lui permettre de nouvelles données dynamiquement.
+
+Le traitement des flux de RxJS permet de transformer un flux de chaîne de caractères en un flux d’objets métiers. Dans notre cas, on a pu transformer les termes de recherches de l’utilisateur en une liste de Pokémons correspond aux critères de la recherche. Plutôt puissant !
