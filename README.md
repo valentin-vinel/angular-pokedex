@@ -327,3 +327,16 @@ Un **Observable** est un producteur de données uniquement.
 Un **Subject** est un Observable également mais il est possible de lui permettre de nouvelles données dynamiquement.
 
 Le traitement des flux de RxJS permet de transformer un flux de chaîne de caractères en un flux d’objets métiers. Dans notre cas, on a pu transformer les termes de recherches de l’utilisateur en une liste de Pokémons correspond aux critères de la recherche. Plutôt puissant !
+
+## Authentification et sécurité
+
+L'authentification nécessite la mise en place d'un système fiable grâce au mécanismes des **Guards**.
+
+Les **Guards** permettent de gérer plusieurs scénarios différents liés à la navigation comme la connexion ou les redirections.
+
+Ils reposent sur un mécanisme simple : Ils retournent un booléen de manière synchrone ou asynchrone afin d'influencer le processus de navigation d’Angular.
+
+Il existe plusieurs types de Guards différents.
+Le type utilisé pour l'authentification est CanActivate.
+
+Il est recommandé de toujours déclarer les Guards au niveau du module racine.
