@@ -306,3 +306,14 @@ Un flux peut émettre trois types de réponses : la valeur associée à un e
 
 La librairie **RxJS** est la librairie la plus populaire pour implémenter la programmation réactive en JavaScript.
 Dans RxJS les flux d'événements sont représentés par un objet appelé Observable. 
+
+## Requêtes HTTP
+
+Il est possible de simuler facilement une API Rest au sein d'une application Angular grâce à la librairie InMemotyData. Cela permet d'interagir avec un jeu de données configuré à l'avance.
+
+Angular inclut son propre client HTTP pour effectuer des requêtes réseaux.
+
+Les types de requêtes les plus courantes sont GET, POST, PUT et DELETE.
+Le client HTTP d'Angular permet de typer les valeurs reçues à travers le réseau.
+
+Les **Observables** permettent de faciliter la gestion des événements asynchrones.
