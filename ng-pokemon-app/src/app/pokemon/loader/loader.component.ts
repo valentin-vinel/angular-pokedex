@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-loader',
-  template: `
+    selector: 'app-loader',
+    template: `
     <div class="preloader-wrapper big active">
       <div class="spinner-layer spinner-blue">
         <div class="circle-clipper left">
@@ -15,5 +15,6 @@ import { Component, OnInit } from '@angular/core';
       </div>
     </div>
   `,
+    standalone: true
 })
 export class LoaderComponent {}
